@@ -1,0 +1,136 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.35s ease, transform 0.5s ease;
+  z-index: 1000;
+}
+.navbar.hide { transform: translateY(-120%); }
+.navbar.scrolled { background: rgba(0, 0, 0, 0.85); }
+
+.logo { font-size: 24px; color: #fff; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.nav-links a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: #ffcc00;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffcc00;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+  background-size: 400% 400%;
+  animation: heroGradient 12s ease infinite;
+}
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero h1 {
+  font-size: 3rem;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.section {
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.about {
+  background: #fef6e4; /* Light Beige */
+  color: #333;
+}
+
+.services {
+  background: #fcd5ce; /* Light Peach */
+  color: #333;
+}
+
+.contact {
+  background: #d8f3dc; /* Mint Green */
+  color: #111;
+}
+
+
+.section h2 {
+  font-size: 2.5rem;
+}
+
+/* DARK THEME */
+body.dark-theme .about {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+body.dark-theme .services {
+  background: #2c2c2c;
+  color: #eee;
+}
+
+body.dark-theme .contact {
+  background: #141414;
+  color: #eee;
+}
